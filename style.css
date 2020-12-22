@@ -1,0 +1,21 @@
+body {
+	margin: 0px 0px 0px 0px;
+	background-color: gray;
+}
+
+#video-container {
+	background-color: black;
+	pointer-events: none;
+	width: 100%;
+	
+	overflow: hidden;
+
+}
+
+#background-video {
+	filter: blur(20px);
+	width: 100%;
+
+	/* position: relative; */
+	
+}
