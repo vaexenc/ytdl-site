@@ -13,9 +13,9 @@ body {
 }
 
 #background-video {
-	filter: blur(20px);
+	filter: saturate(0.8) brightness(0.7) contrast(0.9) blur(1.4vw);
 	width: 100%;
-
-	/* position: relative; */
+	transform: scale(1.4);
+	
 	
 }
