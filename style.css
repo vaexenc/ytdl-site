@@ -63,8 +63,12 @@ body {
 	box-sizing: border-box;
 	margin: auto;
 	display: block;
-	background: linear-gradient(180deg, #FFFFFF 0%, #e4e4e4 100%);
+	background-color: white;
 	outline: none;
+}
+
+#input-bar:hover {
+	background: linear-gradient(white 10%, hsl(0, 0%, 90%) 100%);
 }
 
 /* .video-tag {
