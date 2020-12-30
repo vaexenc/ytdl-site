@@ -42,12 +42,19 @@ body {
 	max-width: 600px;
 }
 
-#title {
+#logo {
+	margin-right: 10px;
+	height: 70px;
+}
+
+#title-container {
 	font-family: 'Pathway Gothic One', sans-serif;
 	font-size: 100px;
-	text-align: center;
 	margin-bottom: 10px;
 	letter-spacing: -5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #subtitle {
