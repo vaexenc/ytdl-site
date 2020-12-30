@@ -78,6 +78,11 @@ body {
 	outline: none;
 }
 
+#input-bar::selection {
+	background-color: red;
+	color: white;
+}
+
 #input-bar:hover {
 	background: linear-gradient(white 10%, hsl(0, 0%, 90%) 100%);
 }
