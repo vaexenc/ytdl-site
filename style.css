@@ -12,10 +12,11 @@ body {
 }
 
 #img-repo {
-	border: 1px solid rgba(95%, 95%, 95%, 0.8);
+	border: 1px solid white;
 	border-radius: 100%;
 	width: 32px;
 	height: 32px;
+	background-color: white;
 }
 
 #video-container {
