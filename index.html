@@ -5,13 +5,31 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>YouBoop - Online YouTube Video Downloader</title>
 	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="script.js"></script>
 </head>
 <body>
+	<header id="header-container">
+		<a href="https://github.com/vaexenc/ytdl-site">
+			<img id="img-repo" src="Octicons-mark-github.svg" alt="GitHub repo" width="32px" height="32px">
+		</a>
+	</header>
 	<div id="video-container">
 		<video id="background-video" autoplay loop muted>
 			<source src="video.mp4" type="video/mp4">
 		</video>
 	</div>
-	<script src="script.js"></script>
+	<div id="main-container">
+		<div id="title">
+			YouBoop
+		</div>
+		<div id="subtitle">
+			Online YouTube Video Downloader
+		</div>
+		<input id="input-bar" placeholder="paste video url or id" autofocus>
+	</div>
 </body>
 </html>
