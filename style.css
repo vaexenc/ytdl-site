@@ -39,7 +39,7 @@ body {
 }
 
 #main-container {
-	margin-top: 50px;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	min-width: 10px;
@@ -48,12 +48,12 @@ body {
 
 #logo {
 	margin-right: 10px;
-	height: 70px;
+	height: 80px;
 }
 
 #title-container {
 	font-family: 'Pathway Gothic One', sans-serif;
-	font-size: 100px;
+	font-size: 120px;
 	margin-bottom: 10px;
 	letter-spacing: -5px;
 	display: flex;
@@ -66,6 +66,7 @@ body {
 	text-align: center;
 	margin-bottom: 60px;
 	color:hsl(0, 0%, 85%);
+	font-size: 20px;
 }
 
 #input-progress-container {
