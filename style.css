@@ -42,6 +42,7 @@ body {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 50px;
 	min-width: 10px;
 	max-width: 600px;
 }
@@ -117,6 +118,25 @@ body {
 	background-size: 50%;
 	animation: progress-bar-animation 0.8s linear infinite;
 	/* transition: height 0.5s linear; */
+}
+
+@keyframes content-animation {
+	from {
+		height: 0px;
+	}
+	to {
+		height: 1000px;
+	}
+}
+
+#content {
+	width: 100%;
+	background-color: hsla(0, 0%, 10%, 0.9);
+	animation-name: content-animation;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	overflow: hidden;
+	color: white;
 }
 
 /* .video-tag {
