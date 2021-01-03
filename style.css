@@ -94,8 +94,24 @@ body {
 	border: 2px solid hsl(0, 100%, 50%);
 }
 
-#progress-bar {
+@keyframes progress-bar-animation {
+	to {
+		background-position: -100%;
+	}
+}
 
+#progress-bar {
+	position: relative;
+	top: -30px;
+	height: 37px;
+	z-index: -10;
+	border-bottom-left-radius: 100px;
+	border-bottom-right-radius: 100px;
+	background-color: red;
+	background-image: linear-gradient(to right, red 33%, hsl(0, 100%, 45%) 33% 66%, hsl(0, 100%, 40%) 66%);
+	background-size: 50%;
+	animation: progress-bar-animation 0.8s linear infinite;
+	/* transition: height 0.5s linear; */
 }
 
 /* .video-tag {
