@@ -54,14 +54,17 @@ body {
 }
 
 #title-container {
-	font-family: 'Pathway Gothic One', sans-serif;
-	font-size: 120px;
 	margin-bottom: 10px;
-	letter-spacing: -5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+#title {
+	font-family: 'Pathway Gothic One', sans-serif;
+	font-size: 120px;
 	color: white;
+	letter-spacing: -5px;
 }
 
 #subtitle {
