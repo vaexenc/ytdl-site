@@ -19,7 +19,7 @@ body {
 	background-color: white;
 }
 
-#video-container {
+#background-video-container {
 	background-color: black;
 	pointer-events: none;
 	width: 100%;
