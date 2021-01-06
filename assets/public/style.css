@@ -133,13 +133,18 @@ body {
 }
 
 #content {
-	width: 100%;
+	max-width: 800px;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 50px;
+	border-radius: 30px;
 	background-color: hsla(0, 0%, 10%, 0.9);
 	animation-name: content-animation;
 	animation-duration: 1s;
 	animation-fill-mode: both;
 	overflow: hidden;
 	color: white;
+	padding: 30px;
 }
 
 /* .video-tag {
