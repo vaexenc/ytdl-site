@@ -19,7 +19,7 @@ app.use("/public", express.static("assets/public"));
 
 app.get("/query", (req, res) => {
 	function sendEmptyResponse() {
-		res.json("{}");
+		res.json({});
 	}
 	const query = req.query;
 	if (!query || !query.q) {
