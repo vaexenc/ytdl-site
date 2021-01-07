@@ -18,6 +18,7 @@
   "homepage": "https://github.com/vaexenc/ytdl-site",
   "dependencies": {
     "express": "^4.17.1",
-    "express-favicon": "^2.0.1"
+    "express-favicon": "^2.0.1",
+    "youtube-dl": "latest"
   }
 }
