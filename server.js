@@ -24,9 +24,9 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/assets/index.html", (err) => onError(err));
 });
 
-app.get("/test", (req, res) => {
-	res.send("test");
-});
+// app.get("/test", (req, res) => {
+// 	res.send("test")
+// });
 
 app.get("/*", (req, res) => {
 	res.redirect("/");
@@ -35,5 +35,3 @@ app.get("/*", (req, res) => {
 app.listen(port, () => {
 	console.log("Started app.");
 });
-
-// http.get("http://localhost");
