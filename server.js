@@ -1,9 +1,9 @@
 "use strict";
 
-const {exec} = require("child_process");
 const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
+const youtubedl = require("youtube-dl");
 
 const port = 80;
 
@@ -26,13 +26,13 @@ app.get("/query", (req, res) => {
 		sendEmptyResponse();
 		return;
 	}
-	exec("youtube-dl --dump-json " + query.q, (error, stdout, stderr) => {
-		if (error) {
+	youtubedl.exec(query.q, ["--dump-json"], {}, (err, output) => {
+		if (err) {
 			sendEmptyResponse();
 		}
 		else {
 			res.set("Content-Type", "application/json");
-			res.end(stdout);
+			res.end(output[0]);
 		}
 	});
 });
