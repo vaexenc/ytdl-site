@@ -1,8 +1,8 @@
 @font-face {
-	font-family: 'fontello';
+	font-family: "fontello";
 	src:
-		url('fontello.woff2') format('woff2'),
-		url('fontello.woff') format('woff');
+		url("fontello.woff2") format("woff2"),
+		url("fontello.woff") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }
@@ -10,7 +10,7 @@
 body {
 	margin: 0px 0px 0px 0px;
 	background-color: gray;
-	font-family: 'Roboto', sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-display: optional;
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 #title {
-	font-family: 'Pathway Gothic One', sans-serif;
+	font-family: "Pathway Gothic One", sans-serif;
 	font-size: 120px;
 	color: white;
 	letter-spacing: -5px;
@@ -104,7 +104,7 @@ body {
 	display: block;
 	background-color: white;
 	outline: none;
-	font-family: 'Roboto';
+	font-family: "Roboto";
 	font-size: 18px;
 }
 
