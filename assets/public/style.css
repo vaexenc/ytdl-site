@@ -100,7 +100,6 @@ body {
 	width: 100%;
 	height: 60px;
 	padding: 20px;
-	padding-right: 65px;
 	box-sizing: border-box;
 	margin: auto;
 	display: block;
@@ -108,6 +107,10 @@ body {
 	outline: none;
 	font-family: "Roboto";
 	font-size: 18px;
+}
+
+#input-bar.has-indicator {
+	padding-right: 65px;
 }
 
 #input-bar::selection {

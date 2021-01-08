@@ -15,16 +15,19 @@ function getYoutubeIDFromString(input) {
 function indicateWarning() {
 	failIndicator.className = "fail-indicator-warning";
 	failIndicator.title = "Invalid input";
+	inputBar.className = "has-indicator";
 }
 
 function indicateError() {
 	failIndicator.className = "fail-indicator-error";
 	failIndicator.title = "Error";
+	inputBar.className = "has-indicator";
 }
 
 function disableIndicator() {
 	failIndicator.className = "";
 	failIndicator.title = "";
+	inputBar.className = "";
 }
 
 function enableProgressBar() {
