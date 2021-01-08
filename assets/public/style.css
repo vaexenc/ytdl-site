@@ -86,6 +86,7 @@ body {
 #input-progress-container {
 	width: 96%;
 	position: relative;
+	height: 50px;
 }
 
 #input-fail-indicator-container {
@@ -99,6 +100,7 @@ body {
 	width: 100%;
 	height: 60px;
 	padding: 20px;
+	padding-right: 65px;
 	box-sizing: border-box;
 	margin: auto;
 	display: block;
@@ -127,7 +129,7 @@ body {
 	transform: translate(50%, -50%);
 }
 
-.fail-indicator {
+#fail-indicator {
 	width:100%;
 	height:100%;
 	display: flex;
@@ -135,17 +137,20 @@ body {
 	justify-content: center;
 	font-family: "fontello";
 	font-size: 46px;
+	visibility: hidden;
 }
 
-.fail-indicator-warning::before {
+#fail-indicator.fail-indicator-warning::before {
 	content: "\e802";
 	color: #FFCF00;
 	font-size: 84%;
+	visibility: visible;
 }
 
-.fail-indicator-error::before {
+#fail-indicator.fail-indicator-error::before {
 	content: "\e801";
 	color: red;
+	visibility: visible;
 }
 
 @keyframes progress-bar-animation {
@@ -157,7 +162,7 @@ body {
 #progress-bar {
 	position: relative;
 	margin-top: -30px;
-	height: 37px;
+	height: 0px;
 	z-index: -10;
 	border-bottom-left-radius: 100px;
 	border-bottom-right-radius: 100px;
@@ -165,7 +170,11 @@ body {
 	background-image: linear-gradient(to right, red 33%, hsl(0, 100%, 45%) 33% 66%, hsl(0, 100%, 40%) 66%);
 	background-size: 50%;
 	animation: progress-bar-animation 0.8s linear infinite;
-	/* transition: height 0.5s linear; */
+	/* transition: height 0.1s linear; */
+}
+
+#progress-bar.progress-bar-enabled {
+	height: 37px;
 }
 
 @keyframes content-animation {
