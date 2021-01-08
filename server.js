@@ -29,10 +29,14 @@ app.get("/query", (req, res) => {
 	youtubedl.exec(query.q, ["--dump-json"], {}, (err, output) => {
 		if (err) {
 			sendEmptyResponse();
+			return;
 		}
-		else {
-			res.set("Content-Type", "application/json");
-			res.end(output[0]);
+		const outputJSON = output[0];
+		const jsonParsed = JSON.parse(outputJSON);
+		if (jsonParsed.extractor !== "youtube") {
+			sendEmptyResponse();
+		} else {
+			res.json(jsonParsed);
 		}
 	});
 });

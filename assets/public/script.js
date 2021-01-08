@@ -3,6 +3,7 @@
 const inputBar = document.getElementById("input-bar");
 const progressBar = document.getElementById("progress-bar");
 const failIndicator = document.getElementById("fail-indicator");
+let globalFetchObject;
 
 function getYoutubeIDFromString(input) {
 	const pattern1 = /(?:vi?=|\/embed\/|youtu.be\/|\/vi?\/)(?<id>[a-zA-Z0-9-_]{11})/;
@@ -11,20 +12,19 @@ function getYoutubeIDFromString(input) {
 	if (match) return match.groups.id;
 }
 
-function getVideoJSON(youtubeID) {
-	// fetch("/query?q=" + youtubeID).then();
-}
-
 function indicateWarning() {
 	failIndicator.className = "fail-indicator-warning";
+	failIndicator.title = "Invalid input";
 }
 
 function indicateError() {
 	failIndicator.className = "fail-indicator-error";
+	failIndicator.title = "Error";
 }
 
 function disableIndicator() {
 	failIndicator.className = "";
+	failIndicator.title = "";
 }
 
 function enableProgressBar() {
@@ -33,6 +33,20 @@ function enableProgressBar() {
 
 function disableProgressBar() {
 	progressBar.className = "";
+}
+
+function fetchVideoJSON(youtubeID) {
+	globalFetchObject = fetch("/query?q=" + youtubeID);
+	let fetchedJSON;
+	const fetchObject = globalFetchObject;
+	fetchObject.then((response) => {
+		console.log(response);
+		return response.json();
+	}).then((json) => {
+		console.log(json);
+		fetchedJSON = json;
+		disableProgressBar();
+	});
 }
 
 inputBar.addEventListener("input", (e) => {
@@ -46,7 +60,7 @@ inputBar.addEventListener("input", (e) => {
 	if (youtubeID) {
 		disableIndicator();
 		enableProgressBar();
-		// getVideoJSON(input);
+		fetchVideoJSON(input);
 	} else {
 		indicateWarning();
 		disableProgressBar();
