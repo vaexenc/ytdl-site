@@ -37,19 +37,30 @@ function disableProgressBar() {
 
 function fetchVideoJSON(youtubeID) {
 	globalFetchObject = fetch("/query?q=" + youtubeID);
-	let fetchedJSON;
 	const fetchObject = globalFetchObject;
-	fetchObject.then((response) => {
-		console.log(response);
+	fetchObject.then((response, error) => {
+		if (fetchObject !== globalFetchObject) return;
+		if (error) {
+			disableProgressBar();
+			indicateError();
+		}
 		return response.json();
-	}).then((json) => {
-		console.log(json);
-		fetchedJSON = json;
+	}).then((json, error) => {
+		// todo: error?
+		if (fetchObject !== globalFetchObject) return;
 		disableProgressBar();
+		console.log(json);
+		if (Object.keys(json).length === 0) {
+			indicateError();
+		} else {
+			disableIndicator();
+			// todo: display data
+		}
 	});
 }
 
 inputBar.addEventListener("input", (e) => {
+	globalFetchObject = null;
 	const input = e.target.value;
 	if (input === "") {
 		disableIndicator();
