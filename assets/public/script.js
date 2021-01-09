@@ -7,7 +7,7 @@ const contentContainer = document.getElementById("content-container");
 let globalFetchObject;
 
 function getYoutubeIDFromString(input) {
-	const pattern1 = /(?:vi?=|\/embed\/|youtu.be\/|\/vi?\/)(?<id>[a-zA-Z0-9-_]{11})(?:[^a-zA-Z0-9-_]|$)/;
+	const pattern1 = /(?:(?:vi?=)|(?:\/embed\/)|(?:youtu.be\/)|(?:\/vi?\/))(?<id>[a-zA-Z0-9-_]{11})(?:[^a-zA-Z0-9-_]|$)/;
 	const pattern2 = /^(?<id>[a-zA-Z0-9-_]{11})$/;
 	const match = input.match(pattern1) || input.match(pattern2);
 	if (match) return match.groups.id;
