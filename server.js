@@ -36,7 +36,12 @@ app.get("/query", (req, res) => {
 		if (jsonParsed.extractor !== "youtube") {
 			sendEmptyResponse();
 		} else {
-			res.json(jsonParsed);
+			const jsonKeys = ["id", "title", "uploader", "upload_date", "view_count", "like_count", "dislike_count", "formats"];
+			const jsonShort = {};
+			for (const key of jsonKeys) {
+				jsonShort[key] = jsonParsed[key];
+			}
+			res.json(jsonShort);
 		}
 	});
 });
