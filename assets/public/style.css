@@ -62,21 +62,21 @@ body {
 	height: 80px;
 }
 
-#title-container {
+#main-title-container {
 	margin-bottom: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-#title {
+#main-title {
 	font-family: "Pathway Gothic One", sans-serif;
 	font-size: 120px;
 	color: white;
 	letter-spacing: -5px;
 }
 
-#subtitle {
+#main-subtitle {
 	text-align: center;
 	margin-bottom: 60px;
 	color:hsl(0, 0%, 85%);
@@ -180,26 +180,50 @@ body {
 	height: 37px;
 }
 
-@keyframes content-animation {
-	from {
-		height: 0px;
-	}
-	to {
-		height: 1000px;
-	}
+#content-container {
+	overflow: hidden;
+	transform: scaleY(0%);
+	transform-origin: top;
+	transition: transform 0.5s;
 }
 
 #content {
 	max-width: 800px;
 	width: 80%;
+	height: 1000px;
+	box-sizing: border-box;
+	overflow: hidden;
 	margin: auto;
 	margin-bottom: 50px;
 	border-radius: 30px;
 	background-color: hsla(0, 0%, 10%, 0.9);
-	animation-name: content-animation;
-	animation-duration: 1s;
-	animation-fill-mode: both;
 	overflow: hidden;
 	color: white;
 	padding: 30px;
+}
+
+.video-thumbnail {
+	/* 120x90 */
+	width: 120px;
+	height: 90px;
+}
+
+#video-likes-dislikes-bar {
+	position: relative;
+	width: 600px;
+	max-height: 3px;
+	min-height: 0.15vh;
+	background-color: red;
+	border-radius: 999px;
+}
+
+#video-likes-dislikes-bar-likes {
+	position: absolute;
+	width: 0%; /* % of likes */
+	height: 100%;
+	background-color: green;
+	border-top-left-radius: 999px;
+	border-bottom-left-radius: 999px;
+	z-index: 10;
+	content: "";
 }

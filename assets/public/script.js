@@ -3,6 +3,7 @@
 const inputBar = document.getElementById("input-bar");
 const progressBar = document.getElementById("progress-bar");
 const failIndicator = document.getElementById("fail-indicator");
+const contentContainer = document.getElementById("content-container");
 let globalFetchObject;
 
 function getYoutubeIDFromString(input) {
@@ -38,7 +39,30 @@ function disableProgressBar() {
 	progressBar.className = "";
 }
 
-function fetchVideoJSON(youtubeID) {
+function updateContent(json) {
+	contentContainer.style.transform = "scaleY(100%)";
+	const videoInfoSelectorIDsAndValues = [
+		["video-title", json.title],
+		["video-uploader", json.uploader],
+		["video-views", json.view_count],
+		["video-upload-date", json.upload_date]
+	];
+	for (const idAndValue of videoInfoSelectorIDsAndValues) {
+		document.getElementById(idAndValue[0]).innerHTML = idAndValue[1];
+	}
+	const videoThumbnailSelectorIDs = [
+		["video-thumbnail-main", "https://img.youtube.com/vi/" + json.id + "/mqdefault.jpg"],
+		["video-thumbnail-1", "https://img.youtube.com/vi/" + json.id + "/1.jpg"],
+		["video-thumbnail-2", "https://img.youtube.com/vi/" + json.id + "/2.jpg"],
+		["video-thumbnail-3", "https://img.youtube.com/vi/" + json.id + "/3.jpg"]
+	];
+	for (const idAndValue of videoThumbnailSelectorIDs) {
+		document.getElementById(idAndValue[0]).src = idAndValue[1];
+	}
+	document.getElementById("video-likes-dislikes-bar-likes").style.width = json.like_count / (json.like_count + json.dislike_count) * 100 + "%";
+}
+
+function fetchVideoJSONAndUpdatePage(youtubeID) {
 	globalFetchObject = fetch("/query?q=" + youtubeID);
 	const fetchObject = globalFetchObject;
 	fetchObject.then((response, error) => {
@@ -52,12 +76,11 @@ function fetchVideoJSON(youtubeID) {
 		// todo: error?
 		if (fetchObject !== globalFetchObject) return;
 		disableProgressBar();
-		console.log(json);
 		if (Object.keys(json).length === 0) {
 			indicateError();
 		} else {
 			disableIndicator();
-			// todo: display data
+			updateContent(json);
 		}
 	});
 }
@@ -74,7 +97,7 @@ inputBar.addEventListener("input", (e) => {
 	if (youtubeID) {
 		disableIndicator();
 		enableProgressBar();
-		fetchVideoJSON(input);
+		fetchVideoJSONAndUpdatePage(input);
 	} else {
 		indicateWarning();
 		disableProgressBar();
