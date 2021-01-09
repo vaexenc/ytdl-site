@@ -97,7 +97,7 @@ inputBar.addEventListener("input", (e) => {
 	if (youtubeID) {
 		disableIndicator();
 		enableProgressBar();
-		fetchVideoJSONAndUpdatePage(input);
+		fetchVideoJSONAndUpdatePage(youtubeID);
 	} else {
 		indicateWarning();
 		disableProgressBar();
