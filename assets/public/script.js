@@ -44,8 +44,8 @@ function updateContent(json) {
 	const videoInfoSelectorIDsAndValues = [
 		["video-title", json.title],
 		["video-uploader", json.uploader],
-		["video-views", json.view_count],
-		["video-upload-date", json.upload_date]
+		["video-views", json.view_count.toLocaleString()],
+		["video-upload-date", json.upload_date.match(/(\d{4})(\d{2})(\d{2})/).slice(1).join("-")]
 	];
 	for (const idAndValue of videoInfoSelectorIDsAndValues) {
 		document.getElementById(idAndValue[0]).innerHTML = idAndValue[1];
