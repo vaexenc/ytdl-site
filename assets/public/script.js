@@ -1,10 +1,13 @@
 "use strict";
 
+const INPUT_COOLDOWN_DURATION = 500;
+
 const inputBar = document.getElementById("input-bar");
 const progressBar = document.getElementById("progress-bar");
 const failIndicator = document.getElementById("fail-indicator");
 const contentContainer = document.getElementById("content-container");
-let globalFetchObject;
+let globalPendingFetchObject;
+let globalInputCooldownTimeoutID;
 
 function getYoutubeIDFromString(input) {
 	const pattern1 = /(?:(?:vi?=)|(?:\/embed\/)|(?:youtu.be\/)|(?:\/vi?\/))(?<id>[a-zA-Z0-9-_]{11})(?:[^a-zA-Z0-9-_]|$)/;
@@ -63,45 +66,73 @@ function updateContent(json) {
 }
 
 function fetchVideoJSONAndUpdatePage(youtubeID) {
-	globalFetchObject = fetch("/query?q=" + youtubeID);
-	const fetchObject = globalFetchObject;
-	fetchObject.then((response, error) => {
-		if (fetchObject !== globalFetchObject) return;
-		if (error) {
-			disableProgressBar();
-			indicateError();
-		}
+	globalPendingFetchObject = fetch("/query?q=" + youtubeID);
+	const fetchObject = globalPendingFetchObject;
+	fetchObject
+	.then((response) => {
+		if (fetchObject !== globalPendingFetchObject) return;
 		return response.json();
-	}).then((json, error) => {
-		// todo: error?
-		if (fetchObject !== globalFetchObject) return;
+	})
+	.then((json) => {
+		if (fetchObject !== globalPendingFetchObject) return;
+		if (Object.keys(json).length === 0 || !json) throw "";
 		disableProgressBar();
-		if (Object.keys(json).length === 0) {
-			indicateError();
-		} else {
-			disableIndicator();
-			updateContent(json);
-		}
+		disableIndicator();
+		updateContent(json);
+		globalPendingFetchObject = null;
+	})
+	.catch(() => {
+		if (fetchObject !== globalPendingFetchObject) return;
+		disableProgressBar();
+		indicateError();
+		globalPendingFetchObject = null;
 	});
 }
 
+function _putInputBarOnCooldownAndTriggerAfter(callback) {
+	clearTimeout(globalInputCooldownTimeoutID);
+	globalInputCooldownTimeoutID = setTimeout(() => {
+		globalInputCooldownTimeoutID = null;
+		if (callback) callback();
+	}, INPUT_COOLDOWN_DURATION);
+}
+
+function putInputBarOnCooldown() {
+	_putInputBarOnCooldownAndTriggerAfter();
+}
+
+function putInputBarOnCooldownAndTriggerAfter(isTriggeredWithoutManualDispatch) {
+	if (isTriggeredWithoutManualDispatch) {
+		_putInputBarOnCooldownAndTriggerAfter(() => {inputBar.dispatchEvent(new Event("input"));});
+	} else {
+		_putInputBarOnCooldownAndTriggerAfter();
+	}
+}
+
 inputBar.addEventListener("input", (e) => {
-	globalFetchObject = null;
 	const input = e.target.value;
 	if (input === "") {
 		disableIndicator();
 		disableProgressBar();
+		globalPendingFetchObject = null;
 		return;
 	}
 	const youtubeID = getYoutubeIDFromString(input);
-	if (youtubeID) {
-		disableIndicator();
-		enableProgressBar();
-		fetchVideoJSONAndUpdatePage(youtubeID);
-	} else {
+	if (!youtubeID) {
 		indicateWarning();
 		disableProgressBar();
+		globalPendingFetchObject = null;
+		return;
 	}
+	if (globalInputCooldownTimeoutID) {
+		putInputBarOnCooldownAndTriggerAfter(e.isTrusted);
+		return;
+	}
+	globalPendingFetchObject = null;
+	disableIndicator();
+	enableProgressBar();
+	fetchVideoJSONAndUpdatePage(youtubeID);
+	putInputBarOnCooldown();
 });
 
 const playbackSpeed = 0.7;
