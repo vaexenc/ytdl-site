@@ -182,7 +182,7 @@ body {
 
 #content-container {
 	overflow: hidden;
-	transform: scaleY(0%);
+	transform: scaleY(0);
 	transform-origin: top;
 	transition: transform 0.5s;
 }
