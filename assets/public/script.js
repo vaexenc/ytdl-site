@@ -16,24 +16,24 @@ function getYoutubeIDFromString(input) {
 	if (match) return match.groups.id;
 }
 
+function disableIndicator() {
+	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error");
+	failIndicator.title = "";
+	inputBar.classList.remove("input-has-indicator", "input-warning", "input-error");
+}
+
 function indicateWarning() {
 	disableIndicator();
 	failIndicator.classList.add("fail-indicator-warning");
 	failIndicator.title = "Invalid input";
-	inputBar.classList.add("has-indicator");
+	inputBar.classList.add("input-has-indicator", "input-warning");
 }
 
 function indicateError() {
 	disableIndicator();
 	failIndicator.classList.add("fail-indicator-error");
 	failIndicator.title = "Error";
-	inputBar.classList.add("has-indicator");
-}
-
-function disableIndicator() {
-	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error");
-	failIndicator.title = "";
-	inputBar.classList.remove("has-indicator");
+	inputBar.classList.add("input-has-indicator", "input-error");
 }
 
 function enableProgressBar() {
