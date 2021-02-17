@@ -5,7 +5,7 @@ const favicon = require("express-favicon");
 const path = require("path");
 const youtubedl = require("youtube-dl");
 
-const port = 80;
+const port = process.argv[2] || 80;
 
 function onError(err) {
 	if (!err) return;
