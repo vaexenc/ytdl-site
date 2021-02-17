@@ -17,33 +17,35 @@ function getYoutubeIDFromString(input) {
 }
 
 function indicateWarning() {
-	failIndicator.className = "fail-indicator-warning";
+	disableIndicator();
+	failIndicator.classList.add("fail-indicator-warning");
 	failIndicator.title = "Invalid input";
-	inputBar.className = "has-indicator";
+	inputBar.classList.add("has-indicator");
 }
 
 function indicateError() {
-	failIndicator.className = "fail-indicator-error";
+	disableIndicator();
+	failIndicator.classList.add("fail-indicator-error");
 	failIndicator.title = "Error";
-	inputBar.className = "has-indicator";
+	inputBar.classList.add("has-indicator");
 }
 
 function disableIndicator() {
-	failIndicator.className = "";
+	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error");
 	failIndicator.title = "";
-	inputBar.className = "";
+	inputBar.classList.remove("has-indicator");
 }
 
 function enableProgressBar() {
-	progressBar.className = "progress-bar-enabled";
+	progressBar.classList.add("progress-bar-enabled");
 }
 
 function disableProgressBar() {
-	progressBar.className = "";
+	progressBar.classList.remove("progress-bar-enabled");
 }
 
 function updateContent(json) {
-	contentContainer.className = "content-container-visible";
+	contentContainer.classList.add("content-container-visible");
 	const videoInfoSelectorIDsAndValues = [
 		["video-title", json.title],
 		["video-uploader", json.uploader],
