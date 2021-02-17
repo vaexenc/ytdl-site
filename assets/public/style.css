@@ -177,7 +177,7 @@ body {
 }
 
 #progress-bar.progress-bar-enabled {
-	height: 37px;
+	height: 40px;
 }
 
 #content-container {
@@ -187,10 +187,13 @@ body {
 	transition: transform 0.5s;
 }
 
+#content-container.content-container-visible {
+	transform: scaleY(1);
+}
+
 #content {
 	max-width: 800px;
 	width: 80%;
-	height: 1000px;
 	box-sizing: border-box;
 	overflow: hidden;
 	margin: auto;
@@ -199,13 +202,17 @@ body {
 	background-color: hsla(0, 0%, 10%, 0.9);
 	overflow: hidden;
 	color: white;
-	padding: 30px;
+	padding: 40px;
 }
 
 .video-thumbnail {
 	/* 120x90 */
-	width: 120px;
 	height: 90px;
+}
+
+#video-title {
+	font-weight: bold;
+	font-size: 120%;
 }
 
 #video-likes-dislikes-bar {
@@ -215,6 +222,8 @@ body {
 	min-height: 0.15vh;
 	background-color: red;
 	border-radius: 999px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #video-likes-dislikes-bar-likes {

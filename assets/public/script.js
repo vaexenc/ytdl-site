@@ -43,7 +43,7 @@ function disableProgressBar() {
 }
 
 function updateContent(json) {
-	contentContainer.style.transform = "scaleY(1)";
+	contentContainer.className = "content-container-visible";
 	const videoInfoSelectorIDsAndValues = [
 		["video-title", json.title],
 		["video-uploader", json.uploader],
