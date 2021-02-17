@@ -169,6 +169,19 @@ body {
 	visibility: visible;
 }
 
+@keyframes fail-shake-animation {
+	0% {transform: translate(0px);}
+	15% {transform: translate(20px);}
+	40% {transform: translate(-20px);}
+	60% {transform: translate(10px);}
+	80% {transform: translate(-10px);}
+	100% {transform: translate(0px);}
+}
+
+.fail-shake {
+	animation: fail-shake-animation 0.3s linear;
+}
+
 @keyframes progress-bar-animation {
 	to {
 		background-position: -100%;

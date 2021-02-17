@@ -17,23 +17,23 @@ function getYoutubeIDFromString(input) {
 }
 
 function disableIndicator() {
-	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error");
+	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error", "fail-shake");
 	failIndicator.title = "";
-	inputBar.classList.remove("input-has-indicator", "input-warning", "input-error");
+	inputBar.classList.remove("input-has-indicator", "input-warning", "input-error", "fail-shake");
 }
 
 function indicateWarning() {
 	disableIndicator();
-	failIndicator.classList.add("fail-indicator-warning");
+	failIndicator.classList.add("fail-indicator-warning", "fail-shake");
 	failIndicator.title = "Invalid input";
-	inputBar.classList.add("input-has-indicator", "input-warning");
+	inputBar.classList.add("input-has-indicator", "input-warning", "fail-shake");
 }
 
 function indicateError() {
 	disableIndicator();
-	failIndicator.classList.add("fail-indicator-error");
+	failIndicator.classList.add("fail-indicator-error", "fail-shake");
 	failIndicator.title = "Error";
-	inputBar.classList.add("input-has-indicator", "input-error");
+	inputBar.classList.add("input-has-indicator", "input-error", "fail-shake");
 }
 
 function enableProgressBar() {
