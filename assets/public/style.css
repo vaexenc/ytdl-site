@@ -140,8 +140,8 @@ body {
 	right: 40px;
 	top: 50%;
 	z-index: 10;
-	width: 32px;
-	height: 32px;
+	width: 40px;
+	height: 40px;
 	transform: translate(50%, -50%);
 }
 
@@ -153,20 +153,26 @@ body {
 	justify-content: center;
 	font-family: "fontello";
 	font-size: 46px;
-	visibility: hidden;
 }
 
 #fail-indicator.fail-indicator-warning::before {
-	content: "\e802";
-	color: var(--color-warning);
-	font-size: 84%;
-	visibility: visible;
+	width: 100%;
+	height: 100%;
+	content: "";
+	background-image: url("fontawesome-attention.svg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 #fail-indicator.fail-indicator-error::before {
-	content: "\e801";
-	color: var(--color-error);
-	visibility: visible;
+	width: 100%;
+	height: 100%;
+	content: "";
+	background-image: url("fontawesome-cancel-circled.svg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 
 @keyframes fail-shake-animation {
