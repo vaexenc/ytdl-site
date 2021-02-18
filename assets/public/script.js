@@ -50,7 +50,9 @@ function updateContent(json) {
 		["video-title", json.title],
 		["video-uploader", json.uploader],
 		["video-views", json.view_count.toLocaleString()],
-		["video-upload-date", json.upload_date.match(/(\d{4})(\d{2})(\d{2})/).slice(1).join("-")]
+		["video-upload-date", json.upload_date.match(/(\d{4})(\d{2})(\d{2})/).slice(1).join("-")],
+		["video-likes", json.like_count.toLocaleString()],
+		["video-dislikes", json.dislike_count.toLocaleString()]
 	];
 	for (const idAndValue of videoInfoSelectorIDsAndValues) {
 		document.getElementById(idAndValue[0]).innerHTML = idAndValue[1];

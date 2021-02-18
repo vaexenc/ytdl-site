@@ -257,9 +257,13 @@ body {
 	margin-right: 0.23em;
 }
 
+.video-info-icon-dislikes {
+	margin-left: 0.4em;
+}
+
 #video-likes-dislikes-bar {
 	position: relative;
-	width: 600px;
+	width: 8.5em;
 	max-height: 3px;
 	min-height: 0.15vh;
 	background-color: red;
