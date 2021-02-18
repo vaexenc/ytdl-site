@@ -255,6 +255,7 @@ body {
 .video-info-icon {
 	height: 0.95em;
 	margin-right: 0.23em;
+	margin-top: 0.1em;
 }
 
 .video-info-icon-dislikes {
