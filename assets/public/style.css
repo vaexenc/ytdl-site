@@ -245,6 +245,16 @@ body {
 #video-title {
 	font-weight: bold;
 	font-size: 120%;
+	margin-bottom: 0.2em;
+}
+
+#video-info-container {
+	margin-top: 0.2em;
+}
+
+.video-info-icon {
+	height: 0.95em;
+	margin-right: 0.23em;
 }
 
 #video-likes-dislikes-bar {
