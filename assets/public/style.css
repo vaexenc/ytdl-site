@@ -265,7 +265,7 @@ body {
 #video-likes-dislikes-bar {
 	position: relative;
 	width: 8em;
-	min-height: 0.5vh;
+	height: max(4px, 0.4vh);
 	background-color: red;
 	border-radius: 999px;
 	margin-top: 5px;
