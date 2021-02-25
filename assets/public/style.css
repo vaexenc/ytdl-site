@@ -214,18 +214,18 @@ body {
 
 #content-container {
 	overflow: hidden;
-	transform: scaleY(0);
-	transform-origin: top;
-	transition: transform 0.5s;
+	max-height: 0px;
+	transition: all 3s;
 }
 
 #content-container.content-container-visible {
-	transform: scaleY(1);
+	max-height: 2000px;
 }
 
 #content {
 	max-width: 800px;
 	width: 80%;
+	height: 100%;
 	box-sizing: border-box;
 	overflow: hidden;
 	margin: auto;
