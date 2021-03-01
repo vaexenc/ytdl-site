@@ -55,7 +55,9 @@ function updateContent(json) {
 		["video-dislikes", json.dislike_count.toLocaleString()]
 	];
 	for (const idAndValue of videoInfoSelectorIDsAndValues) {
-		document.getElementById(idAndValue[0]).innerHTML = idAndValue[1];
+		const id = idAndValue[0], value = idAndValue[1];
+		document.getElementById(id).innerHTML = value;
+		document.getElementById(id).title = value;
 	}
 	const videoThumbnailSelectorIDs = [
 		["video-thumbnail-main", "https://img.youtube.com/vi/" + json.id + "/mqdefault.jpg"],
