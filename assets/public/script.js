@@ -6,6 +6,7 @@ const inputBar = document.getElementById("input-bar");
 const progressBar = document.getElementById("progress-bar");
 const failIndicator = document.getElementById("fail-indicator");
 const contentContainer = document.getElementById("content-container");
+const backgroundVideo = document.getElementById("background-video");
 let globalPendingFetchObject;
 let globalInputCooldownTimeoutID;
 
@@ -143,5 +144,5 @@ inputBar.addEventListener("input", (e) => {
 });
 
 const playbackSpeed = 0.7;
-document.querySelector("#background-video").defaultPlaybackRate = playbackSpeed;
-document.querySelector("#background-video").playbackRate = playbackSpeed;
+backgroundVideo.defaultPlaybackRate = playbackSpeed;
+backgroundVideo.playbackRate = playbackSpeed;
