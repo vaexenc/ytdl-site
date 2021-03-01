@@ -64,6 +64,7 @@ function updateContent(json) {
 		["video-thumbnail-3", "https://img.youtube.com/vi/" + json.id + "/3.jpg"]
 	];
 	for (const idAndValue of videoThumbnailSelectorIDs) {
+		document.getElementById(idAndValue[0]).src = "";
 		document.getElementById(idAndValue[0]).src = idAndValue[1];
 	}
 	document.getElementById("video-likes-dislikes-bar-likes").style.width = json.like_count / (json.like_count + json.dislike_count) * 100 + "%";
