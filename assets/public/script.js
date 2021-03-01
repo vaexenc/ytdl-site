@@ -2,11 +2,12 @@
 
 const INPUT_COOLDOWN_DURATION = 500;
 
-const inputBar = document.getElementById("input-bar");
-const progressBar = document.getElementById("progress-bar");
-const failIndicator = document.getElementById("fail-indicator");
-const contentContainer = document.getElementById("content-container");
-const backgroundVideo = document.getElementById("background-video");
+const inputBar = document.querySelector(".input__bar");
+const progressBar = document.querySelector(".input__progress-bar");
+const inputContainer = document.querySelector(".input");
+const inputFailSymbol = document.querySelector(".input__fail__symbol");
+const content = document.querySelector(".content");
+const backgroundVideo = document.querySelector(".background__video");
 let globalPendingFetchObject;
 let globalInputCooldownTimeoutID;
 
@@ -18,59 +19,65 @@ function getYoutubeIDFromString(input) {
 }
 
 function disableIndicator() {
-	failIndicator.classList.remove("fail-indicator-warning", "fail-indicator-error", "fail-shake");
-	failIndicator.title = "";
-	inputBar.classList.remove("input-has-indicator", "input-warning", "input-error", "fail-shake");
+	inputFailSymbol.classList.remove("input__fail__symbol--warning", "input__fail__symbol--error");
+	inputFailSymbol.title = "";
+	inputBar.classList.remove("input__bar--has-indicator");
+	inputContainer.classList.remove("input--shake");
 }
 
 function indicateWarning() {
 	disableIndicator();
-	failIndicator.classList.add("fail-indicator-warning", "fail-shake");
-	failIndicator.title = "Invalid input";
-	inputBar.classList.add("input-has-indicator", "input-warning", "fail-shake");
+	inputFailSymbol.classList.add("input__fail__symbol--warning");
+	inputFailSymbol.title = "Invalid input";
+	inputBar.classList.add("input__bar--has-indicator");
+	inputContainer.classList.add("input--shake");
 }
 
 function indicateError() {
 	disableIndicator();
-	failIndicator.classList.add("fail-indicator-error", "fail-shake");
-	failIndicator.title = "Error";
-	inputBar.classList.add("input-has-indicator", "input-error", "fail-shake");
+	inputFailSymbol.classList.add("input__fail__symbol--error");
+	inputFailSymbol.title = "Error";
+	inputBar.classList.add("input__bar--has-indicator");
+	inputContainer.classList.add("input--shake");
 }
 
 function enableProgressBar() {
-	progressBar.classList.add("progress-bar-enabled");
+	progressBar.classList.add("input__progress-bar--enabled");
 }
 
 function disableProgressBar() {
-	progressBar.classList.remove("progress-bar-enabled");
+	progressBar.classList.remove("input__progress-bar--enabled");
 }
 
 function updateContent(json) {
-	contentContainer.classList.add("content-container-visible");
-	const videoInfoSelectorIDsAndValues = [
-		["video-title", json.title],
-		["video-uploader", json.uploader],
-		["video-views", json.view_count.toLocaleString()],
-		["video-upload-date", json.upload_date.match(/(\d{4})(\d{2})(\d{2})/).slice(1).join("-")],
-		["video-likes", json.like_count.toLocaleString()],
-		["video-dislikes", json.dislike_count.toLocaleString()]
+	content.classList.add("content--visible");
+	const infoSelectorsAndValues = [
+		[".video-title", json.title],
+		[".info__data__text-uploader", json.uploader],
+		[".info__data__text-views", json.view_count.toLocaleString()],
+		[".info__data__text-upload-date", json.upload_date.match(/(\d{4})(\d{2})(\d{2})/).slice(1).join("-")],
+		[".info__data__text-likes", json.like_count.toLocaleString()],
+		[".info__data__text-dislikes", json.dislike_count.toLocaleString()]
 	];
-	for (const idAndValue of videoInfoSelectorIDsAndValues) {
-		const id = idAndValue[0], value = idAndValue[1];
-		document.getElementById(id).innerHTML = value;
-		document.getElementById(id).title = value;
+	for (const classNameAndValue of infoSelectorsAndValues) {
+		const className = classNameAndValue[0];
+		const value = classNameAndValue[1];
+		document.querySelector(className).innerHTML = value;
+		document.querySelector(className).title = value;
 	}
-	const videoThumbnailSelectorIDs = [
-		["video-thumbnail-main", "https://img.youtube.com/vi/" + json.id + "/mqdefault.jpg"],
-		["video-thumbnail-1", "https://img.youtube.com/vi/" + json.id + "/1.jpg"],
-		["video-thumbnail-2", "https://img.youtube.com/vi/" + json.id + "/2.jpg"],
-		["video-thumbnail-3", "https://img.youtube.com/vi/" + json.id + "/3.jpg"]
+	const thumbnailSelectorsAndValues = [
+		[".info__thumbnail-grid__thumbnail-main", "https://img.youtube.com/vi/" + json.id + "/mqdefault.jpg"],
+		[".info__thumbnail-grid__thumbnail-1", "https://img.youtube.com/vi/" + json.id + "/1.jpg"],
+		[".info__thumbnail-grid__thumbnail-2", "https://img.youtube.com/vi/" + json.id + "/2.jpg"],
+		[".info__thumbnail-grid__thumbnail-3", "https://img.youtube.com/vi/" + json.id + "/3.jpg"]
 	];
-	for (const idAndValue of videoThumbnailSelectorIDs) {
-		document.getElementById(idAndValue[0]).src = "";
-		document.getElementById(idAndValue[0]).src = idAndValue[1];
+	for (const classNameAndValue of thumbnailSelectorsAndValues) {
+		const className = classNameAndValue[0];
+		const value = classNameAndValue[1];
+		document.querySelector(className).src = "";
+		document.querySelector(className).src = value;
 	}
-	document.getElementById("video-likes-dislikes-bar-likes").style.width = json.like_count / (json.like_count + json.dislike_count) * 100 + "%";
+	document.querySelector(".info__data__likes-dislikes-bar__likes").style.width = json.like_count / (json.like_count + json.dislike_count) * 100 + "%";
 }
 
 function fetchVideoJSONAndUpdatePage(youtubeID) {

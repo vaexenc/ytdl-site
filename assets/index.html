@@ -12,60 +12,56 @@
 	<script defer src="public/script.js"></script>
 </head>
 <body>
-	<header id="header-container">
+	<header class="header">
 		<a href="https://github.com/vaexenc/ytdl-site">
-			<img id="img-repo" src="public/Octicons-mark-github.svg" alt="GitHub repository">
+			<img class="repo-img" src="public/Octicons-mark-github.svg" alt="GitHub repository">
 		</a>
 	</header>
-	<div id="background-video-container">
-		<video id="background-video" autoplay loop muted>
+	<div class="background">
+		<video class="background__video" autoplay loop muted>
 			<source src="public/video.mp4" type="video/mp4">
 		</video>
 	</div>
-	<div id="main-container">
-		<div id="main-title-container">
-			<img id="logo" src="public/logo.svg" alt="Logo"><span id="main-title">YouBoop</span>
+	<div class="main">
+		<div class="main__title-logo">
+			<img class="main__title-logo__logo" src="public/logo.svg" alt="Logo"><span class="main__title-logo__title">YouBoop</span>
 		</div>
-		<div id="main-subtitle">
+		<div class="main__subtitle">
 			Yet another online YouTube video downloader
 		</div>
-		<div id="input-progress-container">
-			<div id="input-fail-indicator-container">
-				<div id="fail-indicator-container">
-					<div id="fail-indicator"></div>
-				</div>
-				<input id="input-bar" placeholder="paste video url or id" onclick="this.select();" autocomplete="off" autofocus>
+		<div class="input">
+			<input class="input__bar" placeholder="paste video url or id" onclick="this.select();" autocomplete="off" autofocus>
+			<div class="input__fail">
+				<div class="input__fail__symbol"></div>
 			</div>
-			<div id="progress-bar"></div>
+			<div class="input__progress-bar"></div>
 		</div>
 	</div>
-	<div id="content-container">
-		<div id="content">
-			<div id="video-info">
-				<div id="video-title"></div>
-				<div id="video-data-thumbnails">
-					<div id ="video-data">
-						<img src="public/fontawesome-user-circle.svg" class="video-info-icon" alt="" title="Uploader"><span id="video-uploader"></span><br>
-						<img src="public/fontawesome-eye.svg" class="video-info-icon" alt="" title="Views"><span id="video-views"></span><br>
-						<img src="public/fontawesome-calendar.svg" class="video-info-icon" alt="" title="Upload date"><span id="video-upload-date"></span><br>
-						<div id="video-likes-dislikes-container">
-							<div id="video-likes-container">
-								<img src="public/fontawesome-thumbs-up-alt.svg" class="video-info-icon" alt="" title="Likes"><span id="video-likes"></span>
-							</div>
-							<div>
-								<img src="public/fontawesome-thumbs-down-alt.svg" class="video-info-icon" alt="" title="Dislikes"><span id="video-dislikes"></span><br>
-							</div>
+	<div class="content">
+		<div class="content__content">
+			<div class="video-title"></div>
+			<div class="info">
+				<div class="info__data">
+					<img src="public/fontawesome-user-circle.svg" class="info__data__icon" alt="" title="Uploader"><span class="info__data__text-uploader"></span><br>
+					<img src="public/fontawesome-eye.svg" class="info__data__icon" alt="" title="Views"><span class="info__data__text-views"></span><br>
+					<img src="public/fontawesome-calendar.svg" class="info__data__icon" alt="" title="Upload date"><span class="info__data__text-upload-date"></span><br>
+					<div class="info__data__likes-dislikes">
+						<div class="info__data__likes-dislikes__likes">
+							<img src="public/fontawesome-thumbs-up-alt.svg" class="info__data__icon" alt="" title="Likes"><span class="info__data__text-likes"></span>
 						</div>
-						<div id="video-likes-dislikes-bar">
-							<div id="video-likes-dislikes-bar-likes"></div>
+						<div>
+							<img src="public/fontawesome-thumbs-down-alt.svg" class="info__data__icon" alt="" title="Dislikes"><span class="info__data__text-dislikes"></span><br>
 						</div>
 					</div>
-					<div id="video-thumbnail-grid">
-						<img id="video-thumbnail-main" class="video-thumbnail" alt="" src="#">
-						<img id="video-thumbnail-1" class="video-thumbnail" alt="" src="#">
-						<img id="video-thumbnail-2" class="video-thumbnail" alt="" src="#">
-						<img id="video-thumbnail-3" class="video-thumbnail" alt="" src="#">
+					<div class="info__data__likes-dislikes-bar">
+						<div class="info__data__likes-dislikes-bar__likes"></div>
 					</div>
+				</div>
+				<div class="info__thumbnail-grid">
+					<img class="info__thumbnail-grid__thumbnail info__thumbnail-grid__thumbnail-main" alt="" src="#">
+					<img class="info__thumbnail-grid__thumbnail info__thumbnail-grid__thumbnail-1" alt="" src="#">
+					<img class="info__thumbnail-grid__thumbnail info__thumbnail-grid__thumbnail-2" alt="" src="#">
+					<img class="info__thumbnail-grid__thumbnail info__thumbnail-grid__thumbnail-3" alt="" src="#">
 				</div>
 			</div>
 		</div>
