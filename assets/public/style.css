@@ -318,3 +318,21 @@ body {
 .download-heading {
 	font-size: 24px;
 }
+
+.download-format {
+	display: inline-block;
+	background-color: red;
+	border-radius: 5px;
+	margin: 2px;
+	padding: 0.5em;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.download-format:hover {
+	background-color: hsl(0, 100%, 40%);
+}
+
+a {
+	color: inherit;
+}
