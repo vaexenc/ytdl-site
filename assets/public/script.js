@@ -8,6 +8,9 @@ const inputContainer = document.querySelector(".input");
 const inputFailSymbol = document.querySelector(".input__fail__symbol");
 const content = document.querySelector(".content");
 const backgroundVideo = document.querySelector(".background__video");
+const directLinks = document.querySelector(".direct-links");
+const videoLinks = document.querySelector(".video-links");
+const audioLinks = document.querySelector(".audio-links");
 let globalPendingFetchObject;
 let globalInputCooldownTimeoutID;
 
@@ -50,6 +53,7 @@ function disableProgressBar() {
 }
 
 function updateContent(json) {
+	// text
 	content.classList.add("content--visible");
 	const infoSelectorsAndValues = [
 		[".video-title", json.title],
@@ -65,6 +69,8 @@ function updateContent(json) {
 		document.querySelector(className).innerHTML = value;
 		document.querySelector(className).title = value;
 	}
+
+	// thumbnails
 	const thumbnailSelectorsAndValues = [
 		[".info__thumbnail-grid__thumbnail-main", "https://img.youtube.com/vi/" + json.id + "/mqdefault.jpg"],
 		[".info__thumbnail-grid__thumbnail-1", "https://img.youtube.com/vi/" + json.id + "/1.jpg"],
@@ -77,7 +83,41 @@ function updateContent(json) {
 		document.querySelector(className).src = "";
 		document.querySelector(className).src = value;
 	}
+
+	// likes & dislikes bar
 	document.querySelector(".info__data__likes-dislikes-bar__likes").style.width = json.like_count / (json.like_count + json.dislike_count) * 100 + "%";
+
+	// direct download links
+	directLinks.innerHTML = "";
+	videoLinks.innerHTML = "";
+	audioLinks.innerHTML = "";
+	const formats = [...json.formats].reverse();
+	for (const format of formats) {
+		let insertionTarget;
+		let text;
+		if (format.vcodec !== "none" && format.acodec !== "none") {
+			insertionTarget = directLinks;
+			text = format.format_note.match(/(\d+p?)/)[0] + " " + format.fps + "fps " + format.ext;
+		}
+		else if (format.vcodec !== "none") {
+			insertionTarget = videoLinks;
+			text = format.format_note.match(/(\d+p?)/)[0] + " " + format.fps + "fps " + format.ext;
+		}
+		else if (format.acodec !== "none") {
+			insertionTarget = audioLinks;
+			text = parseInt(format.abr) + "abr " + format.ext;
+		} else {
+			continue;
+		}
+		text += ` ${(format.filesize / 1024 / 1024).toFixed(2)}MB`;
+		const downloadButton = document.createElement("div");
+		downloadButton.classList.add("download-format");
+		downloadButton.innerHTML = text;
+		const elementToInsert = document.createElement("a");
+		elementToInsert.href = format.url;
+		elementToInsert.appendChild(downloadButton);
+		insertionTarget.appendChild(elementToInsert);
+	}
 }
 
 function fetchVideoJSONAndUpdatePage(youtubeID) {

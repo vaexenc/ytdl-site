@@ -236,6 +236,7 @@ body {
 .info {
 	display: flex;
 	text-overflow: ellipsis;
+	margin-bottom: 2em;
 }
 
 .info__data {
@@ -317,13 +318,18 @@ body {
 
 .download-heading {
 	font-size: 24px;
+	margin-bottom: 0.2em;
+}
+
+.download-links {
+	margin-bottom: 1em;
 }
 
 .download-format {
 	display: inline-block;
 	background-color: red;
 	border-radius: 5px;
-	margin: 2px;
+	margin: 0.2em;
 	padding: 0.5em;
 	font-size: 0.9em;
 	font-weight: bold;
