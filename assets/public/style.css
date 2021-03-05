@@ -296,21 +296,21 @@ body {
 }
 
 .info__thumbnail-grid__thumbnail-main {
-	justify-self: center;
-	align-self: end;
+	justify-self: start;
+	align-self: start;
 }
 
 .info__thumbnail-grid__thumbnail-1 {
-	justify-self: center;
-	align-self: end;
+	justify-self: end;
+	align-self: start;
 }
 
 .info__thumbnail-grid__thumbnail-2 {
-	justify-self: center;
-	align-self: start;
+	justify-self: start;
+	align-self: end;
 }
 
 .info__thumbnail-grid__thumbnail-3 {
-	justify-self: center;
-	align-self: start;
+	justify-self: end;
+	align-self: end;
 }
