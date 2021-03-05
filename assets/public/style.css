@@ -314,3 +314,7 @@ body {
 	justify-self: end;
 	align-self: end;
 }
+
+.download-heading {
+	font-size: 24px;
+}
