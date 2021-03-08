@@ -109,7 +109,11 @@ function updateContent(json) {
 		} else {
 			continue;
 		}
-		text += ` ${(format.filesize / 1024 / 1024).toFixed(2)}MB`;
+		if (format.filesize) {
+			text += ` ${(format.filesize / 1024 / 1024).toFixed(2)}MB`;
+		} else {
+			text += " ?.??MB";
+		}
 		const downloadButton = document.createElement("div");
 		downloadButton.classList.add("download-format");
 		downloadButton.innerHTML = text;
