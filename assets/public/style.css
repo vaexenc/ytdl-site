@@ -7,6 +7,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	outline: none;
 }
 
 body {
@@ -101,7 +102,6 @@ body {
 	margin: auto;
 	display: block;
 	background-color: white;
-	outline: none;
 	font-family: "Roboto";
 	font-size: 18px;
 }
